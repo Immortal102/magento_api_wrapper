@@ -89,6 +89,16 @@ module MagentoApiWrapper
     end
   end
 
+  class CustomerCustomerList < MagentoApiWrapper::Response
+    def result
+      @document[:customer_customer_list_response][:store_view]
+    end
+
+    def collection
+      result[:item]
+    end
+  end
+
   class CreateInvoice < MagentoApiWrapper::Response
     def initialize(response)
       super
