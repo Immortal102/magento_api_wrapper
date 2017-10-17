@@ -14,5 +14,15 @@ module MagentoApiWrapper
     #-customer_address.info - Retrieve the specified customer address
     #-customer_address.update - Update the customer address
     #-customer_address.delete - Delete the customer address
+
+    def customer_list(params = {})
+      params.merge!(session_params)
+      document = MagentoApiWrapper::Requests::CustomerCustomerList.new(params)
+      request = MagentoApiWrapper::Request.new(magento_url: params[:magento_url], call_name: :customer_customer_list)
+      request.body = document.body
+      request.attributes = document.attributes
+      customers = MagentoApiWrapper::CustomerCustomerList.new(request.connect!)
+      customers.collection
+    end
   end
 end
