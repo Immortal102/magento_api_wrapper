@@ -7,6 +7,9 @@ require 'magento_api_wrapper/request'
 Dir[File.dirname(__FILE__) + "/magento_api_wrapper/requests/*.rb"].each do |file|
   require file
 end
+Dir[File.dirname(__FILE__) + "/magento_api_wrapper/params/*.rb"].each do |file|
+  require file
+end
 
 require 'magento_api_wrapper/response'
 require 'magento_api_wrapper/responses'
