@@ -11,23 +11,15 @@ module MagentoApiWrapper
     end
   end
 
-  #class StoreList < MagentoApiWrapper::Response
-    #def initialize(response)
-      #super
-    #end
+  class StoreList < MagentoApiWrapper::Response
+    def result
+      @document[:store_list_response][:stores]
+    end
 
-    #def result
-      #@document[:store_list_response]
-    #end
-
-    #def is_active?
-
-    #end
-
-    #def store_id_array
-      #@document[:store_list_response]
-    #end
-  #end
+    def collection
+      array_wrapped(result[:item])
+    end
+  end
 
   #class StoreInfo < MagentoApiWrapper::Response
     #def initialize(response)
@@ -54,7 +46,7 @@ module MagentoApiWrapper
     end
 
     def collection
-      result[:item]
+      array_wrapped(result[:item])
     end
   end
 
@@ -95,7 +87,7 @@ module MagentoApiWrapper
     end
 
     def collection
-      result[:item]
+      array_wrapped(result[:item])
     end
   end
 

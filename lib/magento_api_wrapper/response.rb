@@ -8,17 +8,9 @@ module MagentoApiWrapper
       @document = response.to_hash
     end
 
-    def self.attr_map
-      @attr_map
+    private
+    def array_wrapped(data)
+      Array.wrap(data)
     end
-
-    def to_hash
-      hash = {}
-      self.class.attr_map.keys.each do |attr|
-        hash[attr] = send(attr)
-      end
-      hash
-    end
-
   end
 end
