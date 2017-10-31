@@ -23,7 +23,6 @@ module MagentoApiWrapper
 
     def filters_array
       custom_filters = {}
-      custom_filters.compare_by_identity
       add_simple_filters(custom_filters)
       add_complex_filters(custom_filters)
       custom_filters
